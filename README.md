@@ -41,9 +41,11 @@ This is done intentionally. Let's say we have 2 different clients asking for the
 
 Also, date manipulation is done via ```DateTime``` objects which take into consideration timezones. For the purpose of this test, Sydney Timezone is assumed.
 
+Possible Improvements
+=====================
+Considering the nature of the data fetched from the movie endpoint, response from http call should be cached.
+
 Last Notes
 ==========
 I've decided that a CLI interface was enough, the core functionality is extracted from the entry point anyway. We could easily move the content of ```entrypoint.php``` to a web server route handler or to anything we like.
-
-
 

@@ -19,7 +19,7 @@ class MovieRecommendationTest extends TestCase
         $mockHttpClient->method('get')->will($this->returnValue($httpReturn));
         $this->mockHttp = $mockHttpClient;
     }
-    public function testGetRecommendation12hrFormat()
+    public function testGetRecommendation()
     {
         $movieRecommendation = new MovieRecommendation($this->mockHttp);
         $date = new DateTime("7:30pm");
@@ -30,16 +30,22 @@ class MovieRecommendationTest extends TestCase
         $this->assertEquals($results[0]->getName(), 'Zootopia');
 
 
-    }
-
-    public function testGetRecommendation24hrFormat()
-    {
-        $movieRecommendation = new MovieRecommendation($this->mockHttp);
         $date = new DateTime("19:30");
         $genre = "Comedy";
 
         $results = $movieRecommendation->getRecommendation($genre, $date);
 
         $this->assertEquals($results[0]->getName(), 'Zootopia');
+
+
+        $date = new DateTime("12:00");
+        $genre = "Comedy";
+
+        $results = $movieRecommendation->getRecommendation($genre, $date);
+        //check elements are sorted by rating
+        $this->assertGreaterThanOrEqual($results[1]->getRating(), $results[0]->getRating());
+
+
     }
+
 }

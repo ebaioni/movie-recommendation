@@ -40,7 +40,7 @@ Once the http call is made to fetch the show-list, the response is given to ```S
 The 30minutes look-ahead time is **NOT** part of the ```MovieRecommendation``` class but is, instead, a responsibility of the caller to decide if and how long of a margin is required. 
 This is done intentionally. Let's say, we have 2 different clients asking for the same service but with different look-ahead times. We would be forced to add IF statements based on who is calling the service which is definetely not scalable nor ideal.
 
-Also, date manipulation is done via ```DateTime``` objects which take into consideration timezones. For the purpose of this test, Sydney Timezone is assumed for the input time (which is different from the showing times returned from the endpoint in this time of the year).
+Also, date manipulation is done via ```DateTime``` objects which take into consideration timezones. For the purpose of this test, Sydney Timezone is assumed for the input time (which is different from the showing times returned from the endpoint).
 
 Possible Improvements
 =====================
